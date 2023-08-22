@@ -1,13 +1,10 @@
-// import { useState } from "react";
 import "./App.css";
-import { Button } from "@mui/material";
+import AppNavigation from "./routes/AppNavigation";
 
 function App() {
   return (
     <>
-      <Button variant="contained" style={{ textTransform: "none" }}>
-        Contained
-      </Button>
+      <AppNavigation />
     </>
   );
 }
