@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import {
   Box,
   Container,
@@ -83,8 +84,12 @@ export default function FirstComponent() {
       </>
     );
   };
+
   //COMPONENT TWO
   const Departments = () => {
+    const [toggle1, setToggle1] = useState(true);
+    const [toggle2, setToggle2] = useState(true);
+
     const [isChecked1, setIsChecked1] = useState(false);
     const [isChecked2, setIsChecked2] = useState(false);
     const [isChecked3, setIsChecked3] = useState(false);
@@ -92,6 +97,13 @@ export default function FirstComponent() {
     const [isChecked5, setIsChecked5] = useState(false);
     const [isChecked6, setIsChecked6] = useState(false);
     const [isChecked7, setIsChecked7] = useState(false);
+
+    const handleToggle1 = () => {
+      setToggle1(!toggle1);
+    };
+    const handleToggle2 = () => {
+      setToggle2(!toggle2);
+    };
 
     const handleChange1 = (e: React.ChangeEvent<HTMLInputElement>) => {
       setIsChecked1(e.target.checked);
@@ -122,10 +134,17 @@ export default function FirstComponent() {
 
     return (
       <div>
-        <Box sx={{ display: "flex", flexDirection: "column", ml: 3 }}>
+        <Typography mt="30px" variant="h6" color="text.secondary" gutterBottom>
+          Departments
+        </Typography>
+        <Box sx={{ display: "flex", flexDirection: "column" }}>
           <FormGroup>
             <Box sx={{ display: "flex", alignItems: "center" }}>
-              <ExpandMoreIcon fontSize="large" />
+              {toggle1 ? (
+                <ExpandLessIcon fontSize="large" onClick={handleToggle1} />
+              ) : (
+                <ExpandMoreIcon fontSize="large" onClick={handleToggle1} />
+              )}
               <FormControlLabel
                 control={
                   <Checkbox checked={isChecked1} onChange={handleChange1} />
@@ -133,26 +152,35 @@ export default function FirstComponent() {
                 label="customer_services"
               />
             </Box>
-            <Box>
-              <FormControlLabel
-                sx={{ ml: 7 }}
-                control={
-                  <Checkbox checked={isChecked2} onChange={handleChange2} />
-                }
-                label="support"
-              />
-            </Box>
-            <Box>
-              <FormControlLabel
-                sx={{ ml: 7 }}
-                control={
-                  <Checkbox checked={isChecked3} onChange={handleChange3} />
-                }
-                label="customer_success"
-              />
-            </Box>
+            {toggle1 && (
+              <div>
+                <Box>
+                  <FormControlLabel
+                    sx={{ ml: 7 }}
+                    control={
+                      <Checkbox checked={isChecked2} onChange={handleChange2} />
+                    }
+                    label="support"
+                  />
+                </Box>
+                <Box>
+                  <FormControlLabel
+                    sx={{ ml: 7 }}
+                    control={
+                      <Checkbox checked={isChecked3} onChange={handleChange3} />
+                    }
+                    label="customer_success"
+                  />
+                </Box>
+              </div>
+            )}
+
             <Box sx={{ display: "flex", alignItems: "center" }}>
-              <ExpandMoreIcon fontSize="large" />
+              {toggle2 ? (
+                <ExpandLessIcon fontSize="large" onClick={handleToggle2} />
+              ) : (
+                <ExpandMoreIcon fontSize="large" onClick={handleToggle2} />
+              )}
               <FormControlLabel
                 control={
                   <Checkbox checked={isChecked4} onChange={handleChange4} />
@@ -160,33 +188,37 @@ export default function FirstComponent() {
                 label="design"
               />
             </Box>
-            <Box>
-              <FormControlLabel
-                sx={{ ml: 7 }}
-                control={
-                  <Checkbox checked={isChecked5} onChange={handleChange5} />
-                }
-                label="graphic_design"
-              />
-            </Box>
-            <Box>
-              <FormControlLabel
-                sx={{ ml: 7 }}
-                control={
-                  <Checkbox checked={isChecked6} onChange={handleChange6} />
-                }
-                label="product_design"
-              />
-            </Box>
-            <Box>
-              <FormControlLabel
-                sx={{ ml: 7 }}
-                control={
-                  <Checkbox checked={isChecked7} onChange={handleChange7} />
-                }
-                label="web_design"
-              />
-            </Box>
+            {toggle2 && (
+              <div>
+                <Box>
+                  <FormControlLabel
+                    sx={{ ml: 7 }}
+                    control={
+                      <Checkbox checked={isChecked5} onChange={handleChange5} />
+                    }
+                    label="graphic_design"
+                  />
+                </Box>
+                <Box>
+                  <FormControlLabel
+                    sx={{ ml: 7 }}
+                    control={
+                      <Checkbox checked={isChecked6} onChange={handleChange6} />
+                    }
+                    label="product_design"
+                  />
+                </Box>
+                <Box>
+                  <FormControlLabel
+                    sx={{ ml: 7 }}
+                    control={
+                      <Checkbox checked={isChecked7} onChange={handleChange7} />
+                    }
+                    label="web_design"
+                  />
+                </Box>
+              </div>
+            )}
           </FormGroup>
         </Box>
       </div>
