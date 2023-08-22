@@ -9,13 +9,16 @@ import {
   Box,
 } from "@mui/material";
 
+
+import { useNavigate } from "react-router-dom";
+
 function InitialComponent() {
   const [loginForm, setLoginForm] = useState({
     name: "",
     phoneNumber: "",
     email: "",
   });
-
+  const navigate = useNavigate();
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLoginForm({ ...loginForm, [e.target.name]: e.target.value });
   };
@@ -23,7 +26,7 @@ function InitialComponent() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     localStorage.setItem("loginDetails", JSON.stringify(loginForm));
-    console.log(loginForm);
+    navigate("/first-component");
   };
   return (
     <Box
