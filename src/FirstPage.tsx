@@ -9,10 +9,9 @@ import {
   Box,
 } from "@mui/material";
 
-
 import { useNavigate } from "react-router-dom";
 
-function InitialComponent() {
+function FirstPage() {
   const [loginForm, setLoginForm] = useState({
     name: "",
     phoneNumber: "",
@@ -26,7 +25,7 @@ function InitialComponent() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     localStorage.setItem("loginDetails", JSON.stringify(loginForm));
-    navigate("/first-component");
+    navigate("/second-page");
   };
   return (
     <Box
@@ -95,4 +94,4 @@ function InitialComponent() {
   );
 }
 
-export default InitialComponent;
+export default FirstPage;

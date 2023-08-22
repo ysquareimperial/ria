@@ -1,28 +1,17 @@
 import { useRoutes } from "react-router-dom";
-import FirstComponent from "../FirstComponent";
-import InitialComponent from "../InitialComponent";
+import FirstPage from "../FirstPage";
+import SecondPage from "../SecondPage";
 
 function AppNavigation() {
   let element = useRoutes([
     {
       path: "/",
-      element: <InitialComponent />,
+      element: <FirstPage />,
       children: [{ index: true }],
     },
-    // {
-    //   element: <AppIndex />,
-    //   children: [
-    //     { index: true, element: <AppIndex /> },
-    //     {
-    //       path: "/home",
-    //       element: <Home />,
-    //     },
-       
-    //   ],
-    // },
     {
-      path: "/first-component",
-      element: <FirstComponent />,
+      path: "/second-page",
+      element: <SecondPage />,
     },
   ]);
   return element;

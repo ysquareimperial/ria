@@ -12,8 +12,9 @@ import {
   Checkbox,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-export default function FirstComponent() {
-  //COMPONENT ONE
+export default function SecondPage() {
+  //COMPONENT ONE/////////////////////////////////////////////
+
   const FetchJSON = () => {
     const [data, setData] = useState([]);
     const navigate = useNavigate();
@@ -85,7 +86,7 @@ export default function FirstComponent() {
     );
   };
 
-  //COMPONENT TWO
+  //COMPONENT TWO/////////////////////////////////////////////
   const Departments = () => {
     const [toggle1, setToggle1] = useState(true);
     const [toggle2, setToggle2] = useState(true);
@@ -98,6 +99,17 @@ export default function FirstComponent() {
     const [isChecked6, setIsChecked6] = useState(false);
     const [isChecked7, setIsChecked7] = useState(false);
 
+    const departmentJSON = [
+      {
+        department: "customer_service",
+        sub_departments: ["support", "customer_success"],
+      },
+      {
+        department: "design",
+        sub_departments: ["graphic_design", "product_design", "web_design"],
+      },
+    ];
+
     const handleToggle1 = () => {
       setToggle1(!toggle1);
     };
@@ -106,30 +118,43 @@ export default function FirstComponent() {
     };
 
     const handleChange1 = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setIsChecked1(e.target.checked);
+      const newValue = e.target.checked;
+      setIsChecked1(newValue);
+      setIsChecked2(newValue);
+      setIsChecked3(newValue);
     };
 
     const handleChange2 = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setIsChecked2(e.target.checked);
+      const newValue = e.target.checked;
+      setIsChecked2(newValue);
     };
+
     const handleChange3 = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setIsChecked3(e.target.checked);
+      const newValue = e.target.checked;
+      setIsChecked3(newValue);
     };
 
     const handleChange4 = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setIsChecked4(e.target.checked);
+      const newValue = e.target.checked;
+      setIsChecked4(newValue);
+      setIsChecked5(newValue);
+      setIsChecked6(newValue);
+      setIsChecked7(newValue);
     };
 
     const handleChange5 = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setIsChecked5(e.target.checked);
+      const newValue = e.target.checked;
+      setIsChecked5(newValue);
     };
 
     const handleChange6 = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setIsChecked6(e.target.checked);
+      const newValue = e.target.checked;
+      setIsChecked6(newValue);
     };
 
     const handleChange7 = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setIsChecked7(e.target.checked);
+      const newValue = e.target.checked;
+      setIsChecked7(newValue);
     };
 
     return (
@@ -147,9 +172,12 @@ export default function FirstComponent() {
               )}
               <FormControlLabel
                 control={
-                  <Checkbox checked={isChecked1} onChange={handleChange1} />
+                  <Checkbox
+                    checked={isChecked2 && isChecked3 ? true : isChecked1}
+                    onChange={handleChange1}
+                  />
                 }
-                label="customer_services"
+                label={departmentJSON[0].department}
               />
             </Box>
             {toggle1 && (
@@ -160,7 +188,7 @@ export default function FirstComponent() {
                     control={
                       <Checkbox checked={isChecked2} onChange={handleChange2} />
                     }
-                    label="support"
+                    label={departmentJSON[0].sub_departments[0]}
                   />
                 </Box>
                 <Box>
@@ -169,7 +197,7 @@ export default function FirstComponent() {
                     control={
                       <Checkbox checked={isChecked3} onChange={handleChange3} />
                     }
-                    label="customer_success"
+                    label={departmentJSON[0].sub_departments[1]}
                   />
                 </Box>
               </div>
@@ -183,9 +211,14 @@ export default function FirstComponent() {
               )}
               <FormControlLabel
                 control={
-                  <Checkbox checked={isChecked4} onChange={handleChange4} />
+                  <Checkbox
+                    checked={
+                      isChecked5 && isChecked6 && isChecked7 ? true : isChecked4
+                    }
+                    onChange={handleChange4}
+                  />
                 }
-                label="design"
+                label={departmentJSON[1].department}
               />
             </Box>
             {toggle2 && (
@@ -196,7 +229,7 @@ export default function FirstComponent() {
                     control={
                       <Checkbox checked={isChecked5} onChange={handleChange5} />
                     }
-                    label="graphic_design"
+                    label={departmentJSON[1].sub_departments[0]}
                   />
                 </Box>
                 <Box>
@@ -205,7 +238,7 @@ export default function FirstComponent() {
                     control={
                       <Checkbox checked={isChecked6} onChange={handleChange6} />
                     }
-                    label="product_design"
+                    label={departmentJSON[1].sub_departments[1]}
                   />
                 </Box>
                 <Box>
@@ -214,7 +247,7 @@ export default function FirstComponent() {
                     control={
                       <Checkbox checked={isChecked7} onChange={handleChange7} />
                     }
-                    label="web_design"
+                    label={departmentJSON[1].sub_departments[2]}
                   />
                 </Box>
               </div>
